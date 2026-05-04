@@ -63,7 +63,7 @@ Apache Tomcat 10.1.
 portfolio/
 │
 ├── .gitignore                            ← Git ignore file
-├── .env.example                          ← Environment variables template
+├── .env.example                          ← Environment variables sample configuration
 ├── pom.xml                               ← Maven build (dependencies, WAR config)
 ├── portfolio_db.sql                      ← Full DB schema + sample seed data
 ├── Dockerfile                            ← Docker image configuration
