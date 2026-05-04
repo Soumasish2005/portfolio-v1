@@ -26,10 +26,10 @@
 
                                 <!-- Rotating badge -->
                                 <div class="home__badge">
-                                    <svg viewBox="0 0 100 100" width="100" height="100">
+                                    <svg viewBox="0 0 120 120" width="120" height="120">
                                         <defs>
                                             <path id="circle"
-                                                d="M 50,50 m -30,0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" />
+                                                d="M 60,60 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
                                         </defs>
                                         <text fill="currentColor" font-size="11.5" font-family="DM Sans, sans-serif"
                                             font-weight="600">
@@ -38,7 +38,11 @@
                                             </textPath>
                                         </text>
                                     </svg>
-                                    <span class="home__badge-center">SD</span>
+                                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=soumasishdasgupta@gmail.com&su=Portfolio%20Inquiry:%20Hire%20Me"
+                                        target="_blank" class="home__badge-center">
+                                        <span>Hire</span>
+                                        <span>Me!</span>
+                                    </a>
                                 </div>
                             </div>
 
