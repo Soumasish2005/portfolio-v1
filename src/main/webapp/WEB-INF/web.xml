@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+         https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>Portfolio</display-name>
+
+    <!-- Default session timeout: 30 minutes -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Welcome file — redirects / to /home -->
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
+
+    <!-- ── Public Servlets ─────────────────────────────────── -->
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.public_.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProjectsServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.public_.ProjectsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProjectsServlet</servlet-name>
+        <url-pattern>/projects</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SkillsServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.public_.SkillsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SkillsServlet</servlet-name>
+        <url-pattern>/skills</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AboutServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.public_.AboutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AboutServlet</servlet-name>
+        <url-pattern>/about</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EducationServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.public_.EducationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EducationServlet</servlet-name>
+        <url-pattern>/education</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ContactServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.public_.ContactServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ContactServlet</servlet-name>
+        <url-pattern>/contact</url-pattern>
+    </servlet-mapping>
+
+    <!-- ── Auth Servlets ───────────────────────────────────── -->
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.auth.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.auth.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.auth.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <!-- ── Admin Servlets ──────────────────────────────────── -->
+
+    <servlet>
+        <servlet-name>DashboardServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.admin.DashboardServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DashboardServlet</servlet-name>
+        <url-pattern>/admin/dashboard</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProjectCRUDServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.admin.ProjectCRUDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProjectCRUDServlet</servlet-name>
+        <url-pattern>/admin/projects</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SkillCRUDServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.admin.SkillCRUDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SkillCRUDServlet</servlet-name>
+        <url-pattern>/admin/skills</url-pattern>
+    </servlet-mapping>
+
+</web-app>
