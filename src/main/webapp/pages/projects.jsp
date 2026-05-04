@@ -19,12 +19,6 @@
                         <p>A selection of projects I've built — from systems programming to AI-powered apps.</p>
                     </div>
 
-                    <!-- Search / filter (M2 interactive feature) -->
-                    <div class="projects__search">
-                        <input type="text" id="projectSearch" class="search-input"
-                            placeholder="Search by title or technology…" aria-label="Search projects" />
-                    </div>
-
                     <!-- Featured projects -->
                     <c:forEach var="project" items="${projects}">
                         <c:if test="${project.featured}">
@@ -62,6 +56,12 @@
                             </div>
                         </c:if>
                     </c:forEach>
+
+                    <!-- Search / filter (M2 interactive feature) -->
+                    <div class="projects__search">
+                        <input type="text" id="projectSearch" class="search-input"
+                            placeholder="Search by title or technology…" aria-label="Search projects" />
+                    </div>
 
                     <!-- All projects grid -->
                     <div class="projects__grid" id="projectsGrid">

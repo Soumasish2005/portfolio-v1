@@ -1,7 +1,5 @@
 # Dynamic Personal Portfolio Website
 
-> **Web Technology (TIU-UCS-E322) — Assignment Submission**
-> Soumasish Dasgupta | Techno India University
 
 ---
 

@@ -19,7 +19,7 @@
 
                             <!-- Image / Avatar -->
                             <div class="home__image-wrap">
-                                <img src="${pageContext.request.contextPath}/assets/images/profile.jpg"
+                                <img src="${pageContext.request.contextPath}/assets/images/profile.png"
                                     alt="Soumasish Dasgupta" class="home__avatar" onerror="this.style.display='none';
                           this.nextElementSibling.style.display='flex'" />
                                 <div class="home__avatar-placeholder" style="display:none">🧑‍💻</div>

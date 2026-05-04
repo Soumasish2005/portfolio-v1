@@ -77,7 +77,7 @@
 
                                 <div class="form-group">
                                     <label for="message">Message</label>
-                                    <textarea id="message" name="message" rows="5"
+                                    <textarea id="message" name="message" rows="2"
                                         placeholder="Tell me about your project…" required></textarea>
                                     <span class="field-error"></span>
                                 </div>
