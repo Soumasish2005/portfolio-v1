@@ -46,7 +46,6 @@
                         </a>
                     </div>
                     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                        <!-- icon injected by theme.js -->
                     </button>
                     <button class="nav__hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor"

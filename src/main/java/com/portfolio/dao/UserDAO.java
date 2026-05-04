@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 public class UserDAO {
 
-    /** Inserts a new user. Returns generated id, or -1 on failure. */
     public int insert(User user) throws SQLException {
         String sql = "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)";
         try (Connection con = DBConnection.getConnection();
@@ -25,7 +24,6 @@ public class UserDAO {
         }
     }
 
-    /** Finds a user by username. Returns null if not found. */
     public User findByUsername(String username) throws SQLException {
         String sql = "SELECT * FROM users WHERE username = ?";
         try (Connection con = DBConnection.getConnection();
@@ -38,7 +36,6 @@ public class UserDAO {
         }
     }
 
-    /** Finds a user by email. Returns null if not found. */
     public User findByEmail(String email) throws SQLException {
         String sql = "SELECT * FROM users WHERE email = ?";
         try (Connection con = DBConnection.getConnection();
@@ -51,7 +48,6 @@ public class UserDAO {
         }
     }
 
-    /** Maps the current ResultSet row to a User object. */
     private User map(ResultSet rs) throws SQLException {
         User u = new User();
         u.setId(rs.getInt("id"));
@@ -63,12 +59,11 @@ public class UserDAO {
         return u;
     }
 
-    /** Returns the ID of the most recently registered user. Defaults to 1 if empty. */
     public int getLatestUserId() {
         String sql = "SELECT id FROM users ORDER BY id DESC LIMIT 1";
         try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
+                PreparedStatement ps = con.prepareStatement(sql);
+                ResultSet rs = ps.executeQuery()) {
             if (rs.next()) {
                 return rs.getInt("id");
             }

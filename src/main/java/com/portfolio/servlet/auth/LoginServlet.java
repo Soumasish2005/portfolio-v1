@@ -24,7 +24,6 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        // Pass "registered=true" flag so JSP can show success banner
         if ("true".equals(req.getParameter("registered"))) {
             req.setAttribute("success",
                     "Account created! You can now log in.");
@@ -56,7 +55,7 @@ public class LoginServlet extends HttpServlet {
                 return;
             }
 
-            // ── Create session ──────────────────────────────
+            // Create session
             HttpSession session = req.getSession(true);
             session.setAttribute("loggedInUser", user);
             session.setMaxInactiveInterval(30 * 60); // 30 minutes

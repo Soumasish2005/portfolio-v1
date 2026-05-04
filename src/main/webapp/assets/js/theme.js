@@ -8,7 +8,7 @@
     const DARK = 'dark';
     const LIGHT = 'light';
 
-    // ── Apply saved or system preference on load ──────────
+    // Apply saved or system preference on load
     const saved = localStorage.getItem(STORAGE_KEY);
     const system = window.matchMedia('(prefers-color-scheme: dark)').matches
         ? DARK : LIGHT;
@@ -16,7 +16,7 @@
 
     document.documentElement.setAttribute('data-theme', initial);
 
-    // ── Toggle ────────────────────────────────────────────
+    // Toggle
     function toggleTheme() {
         const current = document.documentElement.getAttribute('data-theme');
         const next = current === DARK ? LIGHT : DARK;
@@ -25,7 +25,7 @@
         updateIcon(next);
     }
 
-    // ── Icon swap ────────────────────────────────────────
+    // Icon swap
     function updateIcon(theme) {
         const btn = document.getElementById('themeToggle');
         if (!btn) return;
@@ -54,7 +54,7 @@
                 </svg>`;
     }
 
-    // ── Mobile menu ──────────────────────────────────────
+    // Mobile menu
     function initMobileMenu() {
         const btn = document.getElementById('navHamburger');
         const menu = document.getElementById('mobileMenu');
@@ -66,7 +66,7 @@
         });
     }
 
-    // ── Init on DOM ready ────────────────────────────────
+    // Init on DOM ready
     document.addEventListener('DOMContentLoaded', () => {
         updateIcon(initial);
 

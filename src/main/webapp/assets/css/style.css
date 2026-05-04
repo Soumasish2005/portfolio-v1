@@ -1,11 +1,8 @@
-/* ============================================================
-   Portfolio – Main Stylesheet
-   Fonts: Bricolage Grotesque (headings) + DM Sans (body)
-   ============================================================ */
+/* Portfolio – Main Stylesheet */
 
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
 
-/* ── CSS Variables ─────────────────────────────────────────── */
+/* CSS Variables */
 :root {
     --bg: #f0efeb;
     --bg-card: #ffffff;
@@ -46,7 +43,7 @@
     --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* ── Reset & Base ──────────────────────────────────────────── */
+/* Reset & Base */
 *,
 *::before,
 *::after {
@@ -88,7 +85,7 @@ img {
     display: block;
 }
 
-/* ── Typography ─────────────────────────────────────────────── */
+/* Typography */
 h1,
 h2,
 h3,
@@ -121,7 +118,7 @@ p {
     font-size: 1rem;
 }
 
-/* ── Layout ─────────────────────────────────────────────────── */
+/* Layout */
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -132,7 +129,7 @@ p {
     padding: 20px 0;
 }
 
-/* ── Navigation ─────────────────────────────────────────────── */
+/* Navigation */
 .nav {
     position: fixed;
     top: 0;
@@ -290,12 +287,12 @@ p {
     color: var(--text);
 }
 
-/* ── Page Wrapper ───────────────────────────────────────────── */
+/* Page Wrapper */
 .page-content {
     margin-top: 64px;
 }
 
-/* ── Buttons ────────────────────────────────────────────────── */
+/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -352,7 +349,7 @@ p {
     color: #fff;
 }
 
-/* ── Cards ──────────────────────────────────────────────────── */
+/* Cards */
 .card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -367,7 +364,7 @@ p {
     transform: translateY(-3px);
 }
 
-/* ── Tags / Chips ───────────────────────────────────────────── */
+/* Tags / Chips */
 .tag {
     display: inline-block;
     background: var(--tag-bg);
@@ -379,7 +376,7 @@ p {
     letter-spacing: 0.02em;
 }
 
-/* ── Page Hero ──────────────────────────────────────────────── */
+/* Page Hero */
 .page-hero {
     padding: 40px 0 56px;
     text-align: center;
@@ -395,7 +392,7 @@ p {
     margin: 0 auto;
 }
 
-/* ── Alerts / Flash ─────────────────────────────────────────── */
+/* Alerts / Flash */
 .alert {
     padding: 12px 18px;
     border-radius: var(--radius-sm);
@@ -428,7 +425,7 @@ p {
     border-color: #065f46;
 }
 
-/* ── Footer ─────────────────────────────────────────────────── */
+/* Footer */
 .footer {
     border-top: 1px solid var(--border);
     padding: 32px 0;
@@ -446,9 +443,7 @@ p {
     text-underline-offset: 3px;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   HOME PAGE
-═══════════════════════════════════════════════════════════ */
+/* HOME PAGE */
 .home-section {
     min-height: calc(100vh - 64px);
     display: flex;
@@ -550,9 +545,7 @@ p {
     flex-wrap: wrap;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   ABOUT PAGE
-═══════════════════════════════════════════════════════════ */
+/* ABOUT PAGE */
 .about__inner {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -620,9 +613,7 @@ p {
     margin-top: 4px;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   SKILLS PAGE
-═══════════════════════════════════════════════════════════ */
+/* SKILLS PAGE */
 .skills__category {
     margin-bottom: 48px;
 }
@@ -685,9 +676,7 @@ p {
     margin-top: 6px;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   PROJECTS PAGE
-═══════════════════════════════════════════════════════════ */
+/* PROJECTS PAGE */
 .projects__featured {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -834,9 +823,7 @@ p {
     border-color: var(--text-muted);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   EDUCATION PAGE
-═══════════════════════════════════════════════════════════ */
+/* EDUCATION PAGE */
 .education__list {
     display: flex;
     flex-direction: column;
@@ -898,9 +885,7 @@ p {
     border-radius: 999px;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   CONTACT PAGE
-═══════════════════════════════════════════════════════════ */
+/* CONTACT PAGE */
 .contact__inner {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
@@ -995,9 +980,7 @@ p {
     display: block;
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — Tablet (max 900px)
-══════════════════════════════════════════════════════════ */
+/* RESPONSIVE — Tablet (max 900px) */
 @media (max-width: 900px) {
 
     .projects__featured-inner {
@@ -1014,12 +997,9 @@ p {
     }
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — Mobile (max 768px)
-══════════════════════════════════════════════════════════ */
+/* RESPONSIVE — Mobile (max 768px) */
 @media (max-width: 768px) {
 
-    /* ── Nav ─────────────────────────────────────────────── */
     .nav__links {
         display: none;
     }
@@ -1049,7 +1029,6 @@ p {
         padding: 12px 20px 16px;
     }
 
-    /* ── Typography ──────────────────────────────────────── */
     h1 {
         font-size: clamp(1.9rem, 8vw, 2.8rem);
     }
@@ -1058,7 +1037,6 @@ p {
         font-size: clamp(1.5rem, 6vw, 2rem);
     }
 
-    /* ── Sections ────────────────────────────────────────── */
     .section {
         padding: 32px 0;
     }
@@ -1072,7 +1050,6 @@ p {
         font-size: 0.97rem;
     }
 
-    /* ── Home Page ───────────────────────────────────────── */
     .home-section {
         min-height: auto;
         padding: 24px 0 48px;
@@ -1122,7 +1099,6 @@ p {
         font-size: 0.9rem;
     }
 
-    /* ── About Page ──────────────────────────────────────── */
     .about__inner {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1164,7 +1140,6 @@ p {
         text-align: left;
     }
 
-    /* ── Skills Page ─────────────────────────────────────── */
     .skills__grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 10px;
@@ -1178,7 +1153,6 @@ p {
         margin-bottom: 32px;
     }
 
-    /* ── Projects Page ───────────────────────────────────── */
     .projects__featured {
         border-radius: var(--radius-md);
     }
@@ -1219,7 +1193,6 @@ p {
         margin-bottom: 24px;
     }
 
-    /* ── Education Page ──────────────────────────────────── */
     .education__list {
         gap: 16px;
     }
@@ -1232,7 +1205,6 @@ p {
         font-size: 1.1rem;
     }
 
-    /* ── Contact Page ────────────────────────────────────── */
     .contact__inner {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1246,12 +1218,10 @@ p {
         justify-content: center;
     }
 
-    /* ── Footer ──────────────────────────────────────────── */
     .footer {
         padding: 24px 0;
     }
 
-    /* ── Buttons ─────────────────────────────────────────── */
     .btn {
         padding: 11px 20px;
         font-size: 0.9rem;
@@ -1263,9 +1233,7 @@ p {
     }
 }
 
-/* ══════════════════════════════════════════════════════════
-   RESPONSIVE — Small Mobile (max 480px)
-══════════════════════════════════════════════════════════ */
+/* RESPONSIVE — Small Mobile (max 480px) */
 @media (max-width: 480px) {
 
     .container {
@@ -1276,7 +1244,6 @@ p {
         font-size: clamp(1.6rem, 9vw, 2.2rem);
     }
 
-    /* Nav */
     .nav__inner {
         padding: 0 16px;
     }
@@ -1285,7 +1252,6 @@ p {
         padding: 12px 16px 16px;
     }
 
-    /* Home */
     .home__avatar {
         width: 190px;
         height: 235px;
@@ -1301,19 +1267,16 @@ p {
         justify-content: center;
     }
 
-    /* About stats — stack vertically on very small screens */
     .about__stats {
         flex-direction: column;
         align-items: center;
         gap: 16px;
     }
 
-    /* Skills — 2 columns */
     .skills__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Projects */
     .project-links {
         flex-direction: column;
         gap: 8px;
@@ -1324,7 +1287,6 @@ p {
         justify-content: center;
     }
 
-    /* Contact — prevent iOS auto-zoom on input focus */
     .form-group input,
     .form-group textarea {
         font-size: 16px;

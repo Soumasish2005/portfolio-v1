@@ -7,7 +7,6 @@ import java.sql.*;
 
 public class AboutDAO {
 
-    /** Returns the about record for a given userId. */
     public About findByUserId(int userId) throws SQLException {
         String sql = "SELECT * FROM about WHERE user_id = ?";
         try (Connection con = DBConnection.getConnection();
@@ -20,7 +19,6 @@ public class AboutDAO {
         }
     }
 
-    /** Updates an existing about record. */
     public void update(About a) throws SQLException {
         String sql = """
                 UPDATE about

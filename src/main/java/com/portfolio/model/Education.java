@@ -8,8 +8,8 @@ public class Education {
     private String degree;
     private String field;
     private int startYear;
-    private Integer endYear; // Integer (nullable) — null means ongoing
-    private Double gpa; // Double (nullable)
+    private Integer endYear;
+    private Double gpa;
 
     public Education() {
     }
@@ -59,7 +59,6 @@ public class Education {
         return gpa;
     }
 
-    /** Returns "2023 – Present" or "2019 – 2023" for display. */
     public String getYearRange() {
         return startYear + " – " + (endYear == null ? "Present" : endYear);
     }

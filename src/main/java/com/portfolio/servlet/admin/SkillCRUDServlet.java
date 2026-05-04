@@ -17,6 +17,7 @@ import java.io.IOException;
  * POST /admin/skills?action=add → insert
  * POST /admin/skills?action=update → update
  */
+
 public class SkillCRUDServlet extends AdminBaseServlet {
 
     private final SkillDAO skillDAO = new SkillDAO();

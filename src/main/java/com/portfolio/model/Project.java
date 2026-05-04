@@ -68,7 +68,6 @@ public class Project {
         return createdAt;
     }
 
-    /** Convenience: splits techStack CSV into a trimmed array for JSP iteration. */
     public String[] getTechArray() {
         return techStack == null ? new String[0]
                 : techStack.split("\\s*,\\s*");

@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String confirm = req.getParameter("confirmPassword");
 
-        // ── Server-side validation ──────────────────────────
+        // validation
         if (username.isEmpty() || email.isEmpty()
                 || password == null || password.isEmpty()) {
             req.setAttribute("error", "All fields are required.");

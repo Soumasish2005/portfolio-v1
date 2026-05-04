@@ -57,13 +57,13 @@
                         </c:if>
                     </c:forEach>
 
-                    <!-- Search / filter (M2 interactive feature) -->
+                    <!-- Search / filter -->
                     <div class="projects__search">
                         <input type="text" id="projectSearch" class="search-input"
                             placeholder="Search by title or technology…" aria-label="Search projects" />
                     </div>
 
-                    <!-- All projects grid -->
+                    <!-- All projects -->
                     <div class="projects__grid" id="projectsGrid">
                         <c:forEach var="project" items="${projects}">
                             <div class="project-card" data-title="${project.title}" data-tech="${project.techStack}">
@@ -122,7 +122,6 @@
 
             <script src="${pageContext.request.contextPath}/assets/js/theme.js"></script>
             <script>
-                // Live project search / filter (M2 interactive feature)
                 document.getElementById('projectSearch').addEventListener('input', function () {
                     var q = this.value.toLowerCase();
                     document.querySelectorAll('#projectsGrid .project-card').forEach(function (card) {

@@ -21,7 +21,6 @@ public class SkillsServlet extends HttpServlet {
             int ownerId = userDAO.getLatestUserId();
             List<Skill> skills = skillDAO.findAllByUser(ownerId);
 
-            // Group skills by category for the JSP to render section by section
             Map<String, List<Skill>> grouped = new LinkedHashMap<>();
             for (Skill s : skills) {
                 grouped.computeIfAbsent(s.getCategory(), k -> new ArrayList<>()).add(s);

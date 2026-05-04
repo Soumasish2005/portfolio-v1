@@ -8,7 +8,6 @@ import java.util.*;
 
 public class SkillDAO {
 
-    /** Returns all skills for a user, ordered by category then name. */
     public List<Skill> findAllByUser(int userId) throws SQLException {
         String sql = "SELECT * FROM skills WHERE user_id = ? ORDER BY category, name";
         List<Skill> list = new ArrayList<>();

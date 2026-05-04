@@ -8,7 +8,6 @@ import java.util.*;
 
 public class ProjectDAO {
 
-    /** All projects for a user, featured first, then newest. */
     public List<Project> findAllByUser(int userId) throws SQLException {
         String sql = "SELECT * FROM projects WHERE user_id = ? "
                 + "ORDER BY featured DESC, created_at DESC";

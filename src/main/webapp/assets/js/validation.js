@@ -8,7 +8,6 @@
         const form = document.getElementById('contactForm');
         if (!form) return;
 
-        // ── Per-field validators ──────────────────────────
         const rules = {
             name: {
                 validate: v => v.trim().length >= 2,
@@ -24,7 +23,6 @@
             }
         };
 
-        // ── Real-time validation on blur ──────────────────
         Object.entries(rules).forEach(([name, rule]) => {
             const field = form.querySelector(`[name="${name}"]`);
             if (!field) return;
@@ -36,7 +34,6 @@
             });
         });
 
-        // ── On submit ────────────────────────────────────
         form.addEventListener('submit', e => {
             let valid = true;
 
@@ -47,13 +44,11 @@
 
             if (!valid) {
                 e.preventDefault();
-                // Scroll to first error
                 const first = form.querySelector('.form-group.invalid');
                 if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
 
-        // ── Helper ───────────────────────────────────────
         function validateField(field, rule) {
             const group = field.closest('.form-group');
             const errorEl = group.querySelector('.field-error');

@@ -27,7 +27,7 @@ public class ContactServlet extends HttpServlet {
         String email = sanitize(req.getParameter("email"));
         String content = sanitize(req.getParameter("message"));
 
-        // Server-side validation (client-side is in validation.js)
+        // validation
         if (name.isEmpty() || email.isEmpty() || content.isEmpty()) {
             req.setAttribute("error", "All fields are required.");
             req.getRequestDispatcher("/pages/contact.jsp").forward(req, res);

@@ -6,6 +6,7 @@ import org.mindrot.jbcrypt.BCrypt;
  * Utility class for BCrypt password hashing and verification.
  * Cost factor 12 provides a good balance of security vs. performance.
  */
+
 public class PasswordUtil {
 
     private static final int COST = 12;

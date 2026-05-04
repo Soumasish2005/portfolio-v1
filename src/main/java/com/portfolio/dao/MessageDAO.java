@@ -8,7 +8,6 @@ import java.util.*;
 
 public class MessageDAO {
 
-    /** All messages, unread first, then newest. */
     public List<Message> findAll() throws SQLException {
         String sql = "SELECT * FROM messages ORDER BY is_read ASC, sent_at DESC";
         List<Message> list = new ArrayList<>();
@@ -22,7 +21,6 @@ public class MessageDAO {
         return list;
     }
 
-    /** Inserts a new contact form submission. */
     public int insert(Message m) throws SQLException {
         String sql = "INSERT INTO messages (name, email, message) VALUES (?, ?, ?)";
         try (Connection con = DBConnection.getConnection();
@@ -39,7 +37,6 @@ public class MessageDAO {
         }
     }
 
-    /** Marks a message as read. */
     public void markRead(int id) throws SQLException {
         String sql = "UPDATE messages SET is_read = 1 WHERE id = ?";
         try (Connection con = DBConnection.getConnection();
@@ -50,7 +47,6 @@ public class MessageDAO {
         }
     }
 
-    /** Unread message count — used for the dashboard badge. */
     public int countUnread() throws SQLException {
         String sql = "SELECT COUNT(*) FROM messages WHERE is_read = 0";
         try (Connection con = DBConnection.getConnection();

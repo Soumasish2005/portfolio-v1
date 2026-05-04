@@ -1,6 +1,4 @@
-/* ============================================================
-   Admin Dashboard Styles
-   ============================================================ */
+/* Admin Dashboard Styles */
 
 .admin-layout {
     display: grid;
@@ -8,7 +6,7 @@
     min-height: calc(100vh - 64px);
 }
 
-/* ── Sidebar ─────────────────────────────────────────────── */
+/* Sidebar */
 .admin-sidebar {
     background: var(--bg-card);
     border-right: 1px solid var(--border);
@@ -69,7 +67,7 @@
     border-radius: 999px;
 }
 
-/* ── Admin Main ──────────────────────────────────────────── */
+/* Admin Main */
 .admin-main {
     padding: 40px 48px;
 }
@@ -87,7 +85,7 @@
     font-size: 0.9rem;
 }
 
-/* ── Stat Cards ──────────────────────────────────────────── */
+/* Stat Cards */
 .admin-stats {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -116,7 +114,7 @@
     margin-top: 6px;
 }
 
-/* ── Tables ──────────────────────────────────────────────── */
+/* Tables */
 .admin-table-wrap {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -176,7 +174,7 @@ tbody tr:hover td {
     gap: 8px;
 }
 
-/* ── Admin Forms ─────────────────────────────────────────── */
+/* Admin Forms */
 .admin-form-wrap {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -256,7 +254,7 @@ tbody tr:hover td {
     padding-top: 8px;
 }
 
-/* Messages table read/unread */
+/* Messages table */
 .badge-unread {
     background: #dc2626;
     color: #fff;
@@ -274,7 +272,7 @@ tbody tr:hover td {
     border-radius: 999px;
 }
 
-/* ── Auth Pages ──────────────────────────────────────────── */
+/* Auth Pages */
 .auth-page {
     min-height: 100vh;
     display: flex;
@@ -338,7 +336,7 @@ tbody tr:hover td {
     text-underline-offset: 3px;
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
+/* Responsive */
 @media (max-width: 900px) {
     .admin-layout {
         grid-template-columns: 1fr;
@@ -357,7 +355,6 @@ tbody tr:hover td {
     }
 }
 
-/* ── Shared Responsive ───────────────────────────────────── */
 @media (max-width: 768px) {
     .home__inner {
         grid-template-columns: 1fr;

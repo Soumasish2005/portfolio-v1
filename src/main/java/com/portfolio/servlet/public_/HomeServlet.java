@@ -16,7 +16,7 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         try {
-            // Owner is the latest registered user
+            // Owner = latest registered user
             int ownerId = userDAO.getLatestUserId();
             req.setAttribute("about", aboutDAO.findByUserId(ownerId));
         } catch (Exception ignored) {

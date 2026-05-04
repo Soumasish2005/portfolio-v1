@@ -17,14 +17,14 @@
                     <div class="container">
                         <div class="home__inner">
 
-                            <!-- Image / Avatar -->
+                            <!-- Avatar -->
                             <div class="home__image-wrap">
                                 <img src="${pageContext.request.contextPath}/assets/images/profile.png"
                                     alt="Soumasish Dasgupta" class="home__avatar" onerror="this.style.display='none';
                           this.nextElementSibling.style.display='flex'" />
                                 <div class="home__avatar-placeholder" style="display:none">🧑‍💻</div>
 
-                                <!-- Rotating badge -->
+                                <!-- Badge -->
                                 <div class="home__badge">
                                     <svg viewBox="0 0 120 120" width="120" height="120">
                                         <defs>
