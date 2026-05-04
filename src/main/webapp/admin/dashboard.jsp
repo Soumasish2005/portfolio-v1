@@ -91,6 +91,7 @@
                                             <th>Message</th>
                                             <th>Received</th>
                                             <th>Status</th>
+                                            <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -102,10 +103,11 @@
                                                             <c:out value="${msg.name}" />
                                                         </td>
                                                         <td>
-                                                            <c:out value="${msg.email}" />
+                                                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=<c:out value='${msg.email}'/>&su=Re:%20Your%20message&body=Hi%20<c:out value='${msg.name}'/>," target="_blank" class="text-link">
+                                                                <c:out value="${msg.email}" />
+                                                            </a>
                                                         </td>
-                                                        <td style="max-width:280px;white-space:nowrap;
-                                 overflow:hidden;text-overflow:ellipsis">
+                                                        <td style="max-width:280px;white-space:nowrap; overflow:hidden;text-overflow:ellipsis" title="<c:out value='${msg.message}'/>">
                                                             <c:out value="${msg.message}" />
                                                         </td>
                                                         <td>${msg.sentAt}</td>
@@ -119,12 +121,17 @@
                                                                 </c:otherwise>
                                                             </c:choose>
                                                         </td>
+                                                        <td>
+                                                            <div class="table-actions">
+                                                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=<c:out value='${msg.email}'/>&su=Re:%20Your%20message%20via%20Portfolio&body=Hi%20<c:out value='${msg.name}'/>,%0A%0AThanks%20for%20reaching%20out.%0A%0A> <c:out value='${msg.message}'/>%0A%0A" target="_blank" class="btn btn-sm btn-primary">Reply</a>
+                                                            </div>
+                                                        </td>
                                                     </tr>
                                                 </c:forEach>
                                             </c:when>
                                             <c:otherwise>
                                                 <tr>
-                                                    <td colspan="5" style="text-align:center;
+                                                    <td colspan="6" style="text-align:center;
                                            padding:24px;color:var(--text-light)">
                                                         No messages yet.
                                                     </td>
