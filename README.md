@@ -59,98 +59,109 @@ Apache Tomcat 10.1.
 ---
 
 ## Project Structure
-```code
+```
 portfolio/
 │
+├── .gitignore                            ← Git ignore file
+├── .env.example                          ← Environment variables template
 ├── pom.xml                               ← Maven build (dependencies, WAR config)
 ├── portfolio_db.sql                      ← Full DB schema + sample seed data
-├── README.md
+├── Dockerfile                            ← Docker image configuration
+├── docker-compose.yml                    ← Docker Compose configuration
+├── README.md                             ← Project documentation
 │
 └── src/main/
-├── java/com/portfolio/
-│   │
-│   ├── model/                        ← Plain Java POJOs
-│   │   ├── User.java
-│   │   ├── About.java
-│   │   ├── Skill.java
-│   │   ├── Project.java
-│   │   ├── Education.java
-│   │   └── Message.java
-│   │
-│   ├── dao/                          ← All DB operations via PreparedStatement
-│   │   ├── UserDAO.java
-│   │   ├── AboutDAO.java
-│   │   ├── SkillDAO.java
-│   │   ├── ProjectDAO.java
-│   │   ├── EducationDAO.java
-│   │   └── MessageDAO.java
-│   │
-│   ├── servlet/
-│   │   ├── auth/
-│   │   │   ├── LoginServlet.java
-│   │   │   ├── RegisterServlet.java
-│   │   │   └── LogoutServlet.java
-│   │   ├── public_/
-│   │   │   ├── HomeServlet.java
-│   │   │   ├── AboutServlet.java
-│   │   │   ├── SkillsServlet.java
-│   │   │   ├── ProjectsServlet.java
-│   │   │   ├── EducationServlet.java
-│   │   │   └── ContactServlet.java
-│   │   └── admin/
-│   │       ├── AdminBaseServlet.java ← Reusable session guard
-│   │       ├── DashboardServlet.java
-│   │       ├── ProjectCRUDServlet.java
-│   │       └── SkillCRUDServlet.java
-│   │
-│   └── util/
-│       ├── DBConnection.java         ← Singleton JDBC connection
-│       └── PasswordUtil.java         ← BCrypt hash + verify
-│
-└── webapp/
-├── WEB-INF/
-│   └── web.xml                   ← Servlet URL mappings, session config
-├── assets/
-│   ├── css/
-│   │   ├── style.css             ← Full design system, CSS variables, responsive
-│   │   └── admin.css             ← Admin dashboard, tables, auth pages
-│   ├── js/
-│   │   ├── theme.js              ← Dark/light toggle
-│   │   └── validation.js         ← Contact form validation
-│   └── images/
-│       └── profile.jpg           ← Profile photo
-├── pages/
-│   ├── includes/
-│   │   ├── head.jsp              ← Shared <head> + theme flash prevention
-│   │   └── nav.jsp               ← Responsive navigation bar
-│   ├── index.jsp
-│   ├── about.jsp
-│   ├── skills.jsp
-│   ├── projects.jsp
-│   ├── education.jsp
-│   └── contact.jsp
-├── auth/
-│   ├── login.jsp
-│   └── register.jsp
-└── admin/
-├── includes/
-│   └── sidebar.jsp
-├── dashboard.jsp
-├── projects/
-│   ├── list.jsp
-│   ├── add.jsp
-│   └── edit.jsp
-└── skills/
-├── list.jsp
-├── add.jsp
-└── edit.jsp
+    ├── java/com/portfolio/
+    │   │
+    │   ├── model/                        ← Plain Java POJOs (Data structures)
+    │   │   ├── User.java
+    │   │   ├── About.java
+    │   │   ├── Skill.java
+    │   │   ├── Project.java
+    │   │   ├── Education.java
+    │   │   └── Message.java
+    │   │
+    │   ├── dao/                          ← Data Access Objects (DB operations)
+    │   │   ├── UserDAO.java
+    │   │   ├── AboutDAO.java
+    │   │   ├── SkillDAO.java
+    │   │   ├── ProjectDAO.java
+    │   │   ├── EducationDAO.java
+    │   │   └── MessageDAO.java
+    │   │
+    │   ├── servlet/                      ← Controller layer (Request handling)
+    │   │   ├── auth/                     ← Authentication (Login, Register, Logout)
+    │   │   │   ├── LoginServlet.java
+    │   │   │   ├── RegisterServlet.java
+    │   │   │   └── LogoutServlet.java
+    │   │   ├── public_/                  ← Publicly accessible pages
+    │   │   │   ├── HomeServlet.java
+    │   │   │   ├── AboutServlet.java
+    │   │   │   ├── SkillsServlet.java
+    │   │   │   ├── ProjectsServlet.java
+    │   │   │   ├── EducationServlet.java
+    │   │   │   └── ContactServlet.java
+    │   │   └── admin/                    ← Protected admin dashboard & CRUD
+    │   │       ├── AdminBaseServlet.java ← Session guard base class
+    │   │       ├── DashboardServlet.java
+    │   │       ├── EducationCRUDServlet.java
+    │   │       ├── ProjectCRUDServlet.java
+    │   │       └── SkillCRUDServlet.java
+    │   │
+    │   └── util/                         ← Utilities (Connection, Password)
+    │       ├── DBConnection.java
+    │       └── PasswordUtil.java
+    │
+    └── webapp/                           ← Web resources (JSP, CSS, JS, Images)
+        ├── WEB-INF/
+        │   └── web.xml                   ← Servlet and mapping configuration
+        ├── assets/
+        │   ├── css/
+        │   │   ├── style.css             ← Main stylesheet (Public pages)
+        │   │   └── admin.css             ← Admin panel styles
+        │   ├── js/
+        │   │   ├── theme.js              ← Dark/Light mode logic
+        │   │   └── validation.js         ← Contact form validation
+        │   ├── images/
+        │   │   ├── profile.png           ← Main profile picture
+        │   │   └── profile.jpg           ← Backup profile picture
+        │   └── files/
+        │       └── resume.pdf            ← Career resume for download
+        ├── pages/                        ← Public JSP views
+        │   ├── includes/                 ← Partials (Head, Nav)
+        │   │   ├── head.jsp
+        │   │   └── nav.jsp
+        │   ├── index.jsp                 ← Home page
+        │   ├── about.jsp
+        │   ├── skills.jsp
+        │   ├── projects.jsp
+        │   ├── education.jsp
+        │   └── contact.jsp
+        ├── auth/                         ← Authentication JSP views
+        │   ├── login.jsp
+        │   └── register.jsp
+        └── admin/                        ← Admin Dashboard JSP views
+            ├── includes/
+            │   └── sidebar.jsp
+            ├── education/                ← Education CRUD views
+            │   ├── list.jsp
+            │   ├── add.jsp
+            │   └── edit.jsp
+            ├── projects/                 ← Projects CRUD views
+            │   ├── list.jsp
+            │   ├── add.jsp
+            │   └── edit.jsp
+            ├── skills/                   ← Skills CRUD views
+            │   ├── list.jsp
+            │   ├── add.jsp
+            │   └── edit.jsp
+            └── dashboard.jsp             ← Admin homepage
 ```
 ---
 
 ## Database Design
 
 **Database name:** `portfolio_db`
-**Character set:** utf8mb4
 
 ### Table: `users`
 Stores admin login credentials.
@@ -238,16 +249,21 @@ Stores contact form submissions. No FK — independent of user accounts.
 
 ### Prerequisites
 
-Ensure the following are installed:
+Ensure the following are installed based on your preferred setup method:
 
+**For Manual Setup:**
 - Java 17 or higher
 - Apache Maven 3.8 or higher
 - MySQL 8.x
 - Apache Tomcat 10.1
 
+**For Docker Setup:**
+- Docker Desktop or Docker Engine
+- Docker Compose
+
 ---
 
-### Step 1 — Extract the Project
+### Step 1 — Extract and Prepare
 
 Unzip the submission folder and navigate into it:
 
@@ -255,119 +271,104 @@ Unzip the submission folder and navigate into it:
 cd portfolio-v1
 ```
 
+Create a `.env` file from the provided example:
+```bash
+cp .env.example .env
+```
+
 ---
 
-### Step 2 — Import the Database
+## Choose Your Setup Method
 
-Open a terminal and run:
+### Option A: Setup with Docker (Recommended)
+
+This method packages the application and database into containers, requiring zero manual configuration of local services.
+
+#### 1. Configure Environment
+Open `.env` and set your desired database credentials. For Docker, `DB_HOST` should be set to `db`.
+
+```env
+DB_HOST=db
+DB_PORT=3306
+DB_NAME=portfolio_db
+DB_USER=root
+DB_PASSWORD='your_password'
+MYSQL_ROOT_PASSWORD='your_password'
+```
+
+#### 2. Launch with Docker Compose
+Run the following command in the project root:
+
+```bash
+docker-compose up --build -d
+```
+
+This will:
+- Spin up a MySQL 8.0 container and automatically import `portfolio_db.sql`.
+- Build the Java WAR using a Maven multi-stage build.
+- Deploy the WAR to a Tomcat 10.1 container as the **ROOT** application.
+
+---
+
+### Option B: Manual Setup (Local Tomcat & MySQL)
+
+#### 1. Import the Database
+Ensure MySQL is running, then run:
 
 ```bash
 mysql -u root -p < portfolio_db.sql
 ```
 
-Or open MySQL Workbench, create a new query tab, and run:
+#### 2. Configure Environment
+Open `.env` and set `DB_HOST` to `localhost`. Ensure the credentials match your local MySQL setup.
 
-```sql
-SOURCE /full/path/to/portfolio_db.sql;
+```env
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=portfolio_db
+DB_USER=root
+DB_PASSWORD='your_mysql_password'
 ```
 
-Verify it worked:
-
-```sql
-USE portfolio_db;
-SHOW TABLES;
-SELECT * FROM users;
-SELECT * FROM projects;
-```
-
-You should see 6 tables with sample data already inserted.
-
----
-
-### Step 3 — Configure Database Connection
-
-Open the following file:
-```bash
-    src/main/java/com/portfolio/util/DBConnection.java
-```
-
-Update the credentials to match your MySQL setup:
-
-```java
-private static final String USER     = "root";          // your username
-private static final String PASSWORD = "yourpassword";  // your password
-```
-
-If your MySQL runs on a different port, also update the URL:
-
-```java
-private static final String URL =
-    "jdbc:mysql://localhost:3306/portfolio_db?useSSL=false&serverTimezone=UTC";
-```
-
----
-
-### Step 4 — Build the WAR
-
-From the project root directory:
+#### 3. Build the WAR
+Run Maven from the project root:
 
 ```bash
 mvn clean package
 ```
+On success, `target/portfolio.war` will be created.
 
-On success you will see:
-
-```bash 
-    BUILD SUCCESS
-    The deployable file is created at `target/portfolio.war`.
-```
----
-
-### Step 5 — Deploy to Tomcat
-
-Copy the WAR to Tomcat's webapps directory:
-
-```powershell
-# Windows (run as Administrator)
-Copy-Item "target\portfolio.war" "C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\" -Force
-```
+#### 4. Deploy to Tomcat
+Copy the WAR to your Tomcat `webapps` directory:
 
 ```bash
 # Linux / Mac
 cp target/portfolio.war /opt/tomcat10/webapps/
+
+# Windows
+copy target\portfolio.war "C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\"
 ```
+
+#### 5. Restart Tomcat
+Restart your Tomcat server to deploy the application. It will be available at `/portfolio`.
 
 ---
 
-### Step 6 — Restart Tomcat
-
-```powershell
-# Windows Service (run as Administrator)
-Stop-Service Tomcat10
-Start-Service Tomcat10
-```
-
-```bash
-# Linux / Mac
-/opt/tomcat10/bin/shutdown.sh
-/opt/tomcat10/bin/startup.sh
-```
-
-Wait for Tomcat to finish deploying (about 5–10 seconds). Tomcat will
-automatically extract the WAR and create a `portfolio` folder in webapps.
-
----
-
-### Step 7 — Open the Application
+### Finish — Open the Application
 
 Visit the following URL in your browser:
 
-```bash
-    http://localhost:8080/portfolio/home
-```
+- **Docker Setup:** [http://localhost:8080/home](http://localhost:8080/home)
+- **Manual Setup:** [http://localhost:8080/portfolio/home](http://localhost:8080/portfolio/home)
+
 ---
 
 ## Application URLs
+
+> [!NOTE]
+> **On Context Paths:** 
+> - If using **Docker**, the application is deployed as the **ROOT** context. Remove `/portfolio` from the URLs below (e.g., `http://localhost:8080/home`).
+> - If using **Manual Setup**, the application is deployed at `/portfolio`. Use the URLs exactly as shown.
 
 ### Public Pages
 
@@ -405,7 +406,7 @@ Visit the following URL in your browser:
 The registration page is intentionally accessible without login so the
 portfolio owner can create their account on first setup:
 
-1. Go to `http://localhost:8080/portfolio/register`
+1. Go to the registration page (e.g., `/portfolio/register` or `/register`)
 2. Enter a username, email, and password (minimum 8 characters)
 3. You will be redirected to the login page on success
 4. Sign in — you will land on the admin dashboard
@@ -463,6 +464,7 @@ portfolio owner can create their account on first setup:
 - [x] Admin dashboard with stats and contact message inbox
 - [x] Projects CRUD — Add, Edit, Delete, Featured flag
 - [x] Skills CRUD — Add, Edit, Delete, Category + Proficiency
+- [x] Education CRUD — Add, Edit, Delete, Degree + GPA + Dates
 - [x] Session guard on all admin routes
 - [x] PreparedStatement used for all database queries
 - [x] Input sanitization and output escaping throughout
@@ -474,13 +476,15 @@ portfolio owner can create their account on first setup:
 
 | Problem | Likely Cause | Fix |
 |---|---|---|
-| `404` on all pages | WAR not deployed or Tomcat not restarted | Copy WAR to webapps and restart Tomcat |
-| `500` on JSP pages | DB connection failed | Check MySQL is running and credentials in `DBConnection.java` |
-| `Communications link failure` | MySQL not running | Start MySQL service |
-| `Access denied for user` | Wrong DB password | Update `DBConnection.java` |
+| `404` on all pages | WAR not deployed or context path mismatch | Check if using `/portfolio` (Manual) or `/` (Docker) |
+| `500` on JSP pages | DB connection failed | Check `.env` credentials and `DB_HOST` (`db` vs `localhost`) |
+| `Docker port conflict` | Port 8080 or 3307 already in use | Stop local Tomcat/MySQL or change ports in `docker-compose.yml` |
+| `Docker changes not reflecting` | Container using old build | Run `docker-compose up --build` |
+| `Communications link failure` | MySQL not running | Start MySQL service or check Docker `db` container status |
+| `Access denied for user` | Wrong DB password | Update `.env` and restart application |
 | `BUILD FAILURE` | Missing dependency or Java version | Ensure Java 17+ and run `mvn clean package` |
 | Admin login not working | BCrypt hash mismatch | Re-register via `/register` to generate a fresh hash |
-| Pages show no data | DB empty or wrong user_id | Re-import `portfolio_db.sql` |
+| Pages show no data | DB empty or wrong user_id | Re-import `portfolio_db.sql` or check Docker volumes |
 
 ---
 
