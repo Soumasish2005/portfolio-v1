@@ -1,6 +1,7 @@
 package com.portfolio.servlet.public_;
 
 import com.portfolio.dao.SkillDAO;
+import com.portfolio.dao.UserDAO;
 import com.portfolio.model.Skill;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
@@ -11,12 +12,14 @@ import java.util.*;
 public class SkillsServlet extends HttpServlet {
 
     private final SkillDAO skillDAO = new SkillDAO();
+    private final UserDAO userDAO = new UserDAO();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         try {
-            List<Skill> skills = skillDAO.findAllByUser(1);
+            int ownerId = userDAO.getLatestUserId();
+            List<Skill> skills = skillDAO.findAllByUser(ownerId);
 
             // Group skills by category for the JSP to render section by section
             Map<String, List<Skill>> grouped = new LinkedHashMap<>();

@@ -131,4 +131,13 @@
         <url-pattern>/admin/skills</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>EducationCRUDServlet</servlet-name>
+        <servlet-class>com.portfolio.servlet.admin.EducationCRUDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EducationCRUDServlet</servlet-name>
+        <url-pattern>/admin/education</url-pattern>
+    </servlet-mapping>
+
 </web-app>

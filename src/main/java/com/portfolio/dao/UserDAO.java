@@ -62,4 +62,19 @@ public class UserDAO {
         u.setCreatedAt(ts != null ? ts.toLocalDateTime() : LocalDateTime.now());
         return u;
     }
+
+    /** Returns the ID of the most recently registered user. Defaults to 1 if empty. */
+    public int getLatestUserId() {
+        String sql = "SELECT id FROM users ORDER BY id DESC LIMIT 1";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 1;
+    }
 }
