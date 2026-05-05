@@ -10,12 +10,13 @@ public class Education {
     private int startYear;
     private Integer endYear;
     private Double gpa;
+    private Double percentage;
 
     public Education() {
     }
 
     public Education(int id, int userId, String institution, String degree,
-            String field, int startYear, Integer endYear, Double gpa) {
+            String field, int startYear, Integer endYear, Double gpa, Double percentage) {
         this.id = id;
         this.userId = userId;
         this.institution = institution;
@@ -24,6 +25,7 @@ public class Education {
         this.startYear = startYear;
         this.endYear = endYear;
         this.gpa = gpa;
+        this.percentage = percentage;
     }
 
     // Getters
@@ -57,6 +59,10 @@ public class Education {
 
     public Double getGpa() {
         return gpa;
+    }
+
+    public Double getPercentage() {
+        return percentage;
     }
 
     public String getYearRange() {
@@ -94,5 +100,9 @@ public class Education {
 
     public void setGpa(Double gpa) {
         this.gpa = gpa;
+    }
+
+    public void setPercentage(Double percentage) {
+        this.percentage = percentage;
     }
 }

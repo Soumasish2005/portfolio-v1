@@ -37,10 +37,12 @@
                                             🏫
                                             <c:out value="${edu.institution}" />
                                         </div>
-                                        <c:if test="${not empty edu.gpa}">
+                                        <c:if test="${not empty edu.gpa or not empty edu.percentage}">
                                             <span class="education-card__gpa">
-                                                GPA:
-                                                <c:out value="${edu.gpa}" />
+                                                <c:choose>
+                                                    <c:when test="${not empty edu.gpa}">GPA: <c:out value="${edu.gpa}" /></c:when>
+                                                    <c:otherwise>Score: <c:out value="${edu.percentage}" />%</c:otherwise>
+                                                </c:choose>
                                             </span>
                                         </c:if>
                                     </div>

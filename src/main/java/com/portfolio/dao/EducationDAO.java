@@ -38,8 +38,8 @@ public class EducationDAO {
     public int insert(Education e) throws SQLException {
         String sql = """
                 INSERT INTO education
-                    (user_id, institution, degree, field, start_year, end_year, gpa)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                    (user_id, institution, degree, field, start_year, end_year, gpa, percentage)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """;
         try (Connection con = DBConnection.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -60,6 +60,11 @@ public class EducationDAO {
             else
                 ps.setDouble(7, e.getGpa());
 
+            if (e.getPercentage() == null)
+                ps.setNull(8, Types.DECIMAL);
+            else
+                ps.setDouble(8, e.getPercentage());
+
             ps.executeUpdate();
             try (ResultSet rs = ps.getGeneratedKeys()) {
                 return rs.next() ? rs.getInt(1) : -1;
@@ -71,7 +76,7 @@ public class EducationDAO {
         String sql = """
                 UPDATE education
                    SET institution = ?, degree = ?, field = ?,
-                       start_year = ?, end_year = ?, gpa = ?
+                       start_year = ?, end_year = ?, gpa = ?, percentage = ?
                  WHERE id = ?
                 """;
         try (Connection con = DBConnection.getConnection();
@@ -92,7 +97,12 @@ public class EducationDAO {
             else
                 ps.setDouble(6, e.getGpa());
 
-            ps.setInt(7, e.getId());
+            if (e.getPercentage() == null)
+                ps.setNull(7, Types.DECIMAL);
+            else
+                ps.setDouble(7, e.getPercentage());
+
+            ps.setInt(8, e.getId());
             ps.executeUpdate();
         }
     }
@@ -121,6 +131,9 @@ public class EducationDAO {
 
         double gpa = rs.getDouble("gpa");
         e.setGpa(rs.wasNull() ? null : gpa);
+
+        double percentage = rs.getDouble("percentage");
+        e.setPercentage(rs.wasNull() ? null : percentage);
 
         return e;
     }

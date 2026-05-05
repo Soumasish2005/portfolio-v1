@@ -52,9 +52,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="gpa">GPA</label>
-                            <input type="number" step="0.01" id="gpa" name="gpa" placeholder="4.0" />
+                        <div style="display:flex; gap:1rem;">
+                            <div class="form-group" style="flex:1;">
+                                <label for="gpa">GPA</label>
+                                <input type="number" step="0.01" id="gpa" name="gpa" placeholder="4.0" />
+                            </div>
+                            <div class="form-group" style="flex:1;">
+                                <label for="percentage">Percentage (%)</label>
+                                <input type="number" step="0.01" id="percentage" name="percentage" placeholder="95.5" />
+                            </div>
                         </div>
 
                         <div class="admin-form__actions">

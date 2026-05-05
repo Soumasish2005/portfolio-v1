@@ -50,7 +50,7 @@
                                 <th>Institution</th>
                                 <th>Degree/Field</th>
                                 <th>Duration</th>
-                                <th>GPA</th>
+                                <th>Score (GPA/%)</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -68,7 +68,15 @@
                                                 <c:if test="${not empty e.field}"> in <c:out value="${e.field}"/></c:if>
                                             </td>
                                             <td>${e.yearRange}</td>
-                                            <td>${e.gpa != null ? e.gpa : '—'}</td>
+                                            <td>
+                                                <small>
+                                                    <c:choose>
+                                                        <c:when test="${not empty e.gpa}">${e.gpa} GPA</c:when>
+                                                        <c:when test="${not empty e.percentage}">${e.percentage}%</c:when>
+                                                        <c:otherwise>—</c:otherwise>
+                                                    </c:choose>
+                                                </small>
+                                            </td>
                                             <td>
                                                 <div class="table-actions">
                                                     <a href="${pageContext.request.contextPath}/admin/education?action=edit&id=${e.id}"

@@ -53,9 +53,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="gpa">GPA</label>
-                            <input type="number" step="0.01" id="gpa" name="gpa" value="${education.gpa != null ? education.gpa : ''}" />
+                        <div style="display:flex; gap:1rem;">
+                            <div class="form-group" style="flex:1;">
+                                <label for="gpa">GPA</label>
+                                <input type="number" step="0.01" id="gpa" name="gpa" value="${education.gpa != null ? education.gpa : ''}" />
+                            </div>
+                            <div class="form-group" style="flex:1;">
+                                <label for="percentage">Percentage (%)</label>
+                                <input type="number" step="0.01" id="percentage" name="percentage" value="${education.percentage != null ? education.percentage : ''}" />
+                            </div>
                         </div>
 
                         <div class="admin-form__actions">

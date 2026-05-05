@@ -117,6 +117,13 @@ public class EducationCRUDServlet extends AdminBaseServlet {
         } else {
             e.setGpa(Double.parseDouble(gpaParam));
         }
+
+        String percentageParam = req.getParameter("percentage");
+        if (percentageParam == null || percentageParam.trim().isEmpty()) {
+            e.setPercentage(null);
+        } else {
+            e.setPercentage(Double.parseDouble(percentageParam));
+        }
         
         return e;
     }

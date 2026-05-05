@@ -99,6 +99,7 @@ CREATE TABLE education (
     start_year  YEAR          NOT NULL,
     end_year    YEAR          DEFAULT NULL,   -- NULL means ongoing
     gpa         DECIMAL(3,1)  DEFAULT NULL,
+    percentage  DECIMAL(5,2)  DEFAULT NULL,
     CONSTRAINT pk_education PRIMARY KEY (id),
     CONSTRAINT fk_education_user
         FOREIGN KEY (user_id) REFERENCES users(id)
