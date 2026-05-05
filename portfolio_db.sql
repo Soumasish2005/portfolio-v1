@@ -133,7 +133,7 @@ INSERT INTO users (username, email, password_hash) VALUES
 (
     'soumasish',
     'dasguptasoumasish@gmail.com',
-    '$2a$12$aBC1defGHI2jklMNO3pqrSTUvwXYZabcDEfghiJKlMnoPqrsTUVwX'
+    '$2a$12$WK3GKOJhuH5Dq892tvt3H.GbZNikSDjsGGScdVHrO1MBCYLnChk6q'
 );
 
 -- ------------------------------------------------------------
