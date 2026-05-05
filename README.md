@@ -371,17 +371,16 @@ portfolio owner can create their account on first setup:
 
 ## Module Completion
 
-| Module | Description | Marks Available | Status |
-|---|---|---|---|
-| **M1** | 6 responsive public pages with semantic HTML and CSS | 6 | Complete |
-| **M2** | Contact form validation + dark/light toggle + project search | 5 | Complete |
-| **M3** | MySQL schema — 6 tables with PKs, FKs, sample records | 5 | Complete |
-| **M4** | JDBC via `DBConnection.java` + `PreparedStatement` throughout | 3 | Complete |
-| **M5** | `RegisterServlet`, `LoginServlet`, `LogoutServlet` + redirect | 4 | Complete |
-| **M6** | Full Projects CRUD + full Skills CRUD in admin dashboard | 6 | Complete |
-| **M7** | Skills and Projects pages render live data from DB via JSP | 2 | Complete |
-| **M8** | Session guard + BCrypt hashing + input validation + escaping | 4 | Complete |
-| **Total** | | **35** | ✅ |
+| Module | Description | Status |
+|---|---|---|
+| **M1** | 6 responsive public pages with semantic HTML and CSS | Complete |
+| **M2** | Contact form validation + dark/light toggle + project search | Complete |
+| **M3** | MySQL schema — 6 tables with PKs, FKs, sample records | Complete |
+| **M4** | JDBC via `DBConnection.java` + `PreparedStatement` throughout | Complete |
+| **M5** | `RegisterServlet`, `LoginServlet`, `LogoutServlet` + redirect | Complete |
+| **M6** | Full Projects CRUD + full Skills CRUD in admin dashboard | Complete |
+| **M7** | Skills and Projects pages render live data from DB via JSP | Complete |
+| **M8** | Session guard + BCrypt hashing + input validation + escaping | Complete |
 
 ---
 
@@ -433,9 +432,9 @@ GPA: 9.8
 
 - GitHub: [github.com/Soumasish2005](https://github.com/Soumasish2005)
 - Email: dasguptasoumasish@gmail.com
-- LinkedIn: [linkedin.com/in/soumasish-dasgupta](https://www.linkedin.com/in/soumasish-dasgupta)
+- LinkedIn: [linkedin.com/in/soumasish-dasgupta](https://www.linkedin.com/in/soumasish-dasgupta-8a6391289)
 
 ---
 
-*Submitted for Web Technology (TIU-UCS-E322) Assignment — Techno India University*
+*Prepared as part of Web Technology (TIU-UCS-E322) Assignment — Techno India University*
 

@@ -33,7 +33,8 @@
             C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/in/soumasish-dasgupta" target="_blank" aria-label="LinkedIn">
+                        <a href="https://www.linkedin.com/in/soumasish-dasgupta-8a6391289" target="_blank"
+                            aria-label="LinkedIn">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037
             -1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046
