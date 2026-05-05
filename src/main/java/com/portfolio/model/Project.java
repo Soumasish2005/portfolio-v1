@@ -12,6 +12,7 @@ public class Project {
     private String githubUrl;
     private String liveUrl;
     private boolean featured;
+    private String coverImage;
     private LocalDateTime createdAt;
 
     public Project() {
@@ -64,6 +65,10 @@ public class Project {
         return featured;
     }
 
+    public String getCoverImage() {
+        return coverImage;
+    }
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
@@ -104,6 +109,10 @@ public class Project {
 
     public void setFeatured(boolean featured) {
         this.featured = featured;
+    }
+
+    public void setCoverImage(String coverImage) {
+        this.coverImage = coverImage;
     }
 
     public void setCreatedAt(LocalDateTime c) {

@@ -39,8 +39,8 @@ public class ProjectDAO {
     public int insert(Project p) throws SQLException {
         String sql = """
                 INSERT INTO projects
-                    (user_id, title, description, tech_stack, github_url, live_url, featured)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
+                    (user_id, title, description, tech_stack, github_url, live_url, featured, cover_image)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """;
         try (Connection con = DBConnection.getConnection();
                 PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -52,6 +52,7 @@ public class ProjectDAO {
             ps.setString(5, p.getGithubUrl());
             ps.setString(6, p.getLiveUrl());
             ps.setBoolean(7, p.isFeatured());
+            ps.setString(8, p.getCoverImage());
             ps.executeUpdate();
 
             try (ResultSet rs = ps.getGeneratedKeys()) {
@@ -64,7 +65,7 @@ public class ProjectDAO {
         String sql = """
                 UPDATE projects
                    SET title = ?, description = ?, tech_stack = ?,
-                       github_url = ?, live_url = ?, featured = ?
+                       github_url = ?, live_url = ?, featured = ?, cover_image = ?
                  WHERE id = ?
                 """;
         try (Connection con = DBConnection.getConnection();
@@ -76,7 +77,8 @@ public class ProjectDAO {
             ps.setString(4, p.getGithubUrl());
             ps.setString(5, p.getLiveUrl());
             ps.setBoolean(6, p.isFeatured());
-            ps.setInt(7, p.getId());
+            ps.setString(7, p.getCoverImage());
+            ps.setInt(8, p.getId());
             ps.executeUpdate();
         }
     }
@@ -101,6 +103,7 @@ public class ProjectDAO {
         p.setGithubUrl(rs.getString("github_url"));
         p.setLiveUrl(rs.getString("live_url"));
         p.setFeatured(rs.getBoolean("featured"));
+        p.setCoverImage(rs.getString("cover_image"));
         Timestamp ts = rs.getTimestamp("created_at");
         p.setCreatedAt(ts != null ? ts.toLocalDateTime() : null);
         return p;

@@ -249,54 +249,38 @@ Stores contact form submissions. No FK — independent of user accounts.
 
 ### Prerequisites
 
-Ensure the following are installed based on your preferred setup method:
-
-**For Manual Setup:**
-- Java 17 or higher
-- Apache Maven 3.8 or higher
-- MySQL 8.x
-- Apache Tomcat 10.1
-
-**For Docker Setup:**
-- Docker Desktop or Docker Engine
-- Docker Compose
+- **Docker Desktop** or **Docker Engine**
+- **Docker Compose**
 
 ---
 
-### Step 1 — Extract and Prepare
+### Step 1 — Prepare the Project
 
-Unzip the submission folder and navigate into it:
+1. Navigate into the project folder:
+   ```bash
+   cd portfolio-v1
+   ```
 
-```bash
-cd portfolio-v1
-```
+2. Create a `.env` file from the provided example:
+   ```bash
+   cp .env.example .env
+   ```
 
-Create a `.env` file from the provided example:
-```bash
-cp .env.example .env
-```
+3. Open `.env` and set your desired database credentials. For Docker, ensure `DB_HOST` is set to `db`.
+
+   ```env
+   DB_HOST=db
+   DB_PORT=3306
+   DB_NAME=portfolio_db
+   DB_USER=root
+   DB_PASSWORD='your_password'
+   MYSQL_ROOT_PASSWORD='your_password'
+   ```
 
 ---
 
-## Choose Your Setup Method
+### Step 2 — Launch with Docker
 
-### Option A: Setup with Docker (Recommended)
-
-This method packages the application and database into containers, requiring zero manual configuration of local services.
-
-#### 1. Configure Environment
-Open `.env` and set your desired database credentials. For Docker, `DB_HOST` should be set to `db`.
-
-```env
-DB_HOST=db
-DB_PORT=3306
-DB_NAME=portfolio_db
-DB_USER=root
-DB_PASSWORD='your_password'
-MYSQL_ROOT_PASSWORD='your_password'
-```
-
-#### 2. Launch with Docker Compose
 Run the following command in the project root:
 
 ```bash
@@ -304,100 +288,52 @@ docker-compose up --build -d
 ```
 
 This will:
-- Spin up a MySQL 8.0 container and automatically import `portfolio_db.sql`.
-- Build the Java WAR using a Maven multi-stage build.
-- Deploy the WAR to a Tomcat 10.1 container as the **ROOT** application.
+- Spin up a **MySQL 8.0** container and automatically import `portfolio_db.sql` with sample data.
+- Build the **Java WAR** using a Maven multi-stage build.
+- Deploy the WAR to a **Tomcat 10.1** container as the **ROOT** application.
+- Create a persistent volume for project cover images in `./project-media/uploads`.
 
 ---
 
-### Option B: Manual Setup (Local Tomcat & MySQL)
+### Step 3 — Open the Application
 
-#### 1. Import the Database
-Ensure MySQL is running, then run:
-
-```bash
-mysql -u root -p < portfolio_db.sql
-```
-
-#### 2. Configure Environment
-Open `.env` and set `DB_HOST` to `localhost`. Ensure the credentials match your local MySQL setup.
-
-```env
-DB_HOST=localhost
-DB_PORT=3306
-DB_NAME=portfolio_db
-DB_USER=root
-DB_PASSWORD='your_mysql_password'
-```
-
-#### 3. Build the WAR
-Run Maven from the project root:
-
-```bash
-mvn clean package
-```
-On success, `target/portfolio.war` will be created.
-
-#### 4. Deploy to Tomcat
-Copy the WAR to your Tomcat `webapps` directory:
-
-```bash
-# Linux / Mac
-cp target/portfolio.war /opt/tomcat10/webapps/
-
-# Windows
-copy target\portfolio.war "C:\Program Files\Apache Software Foundation\Tomcat 10.1\webapps\"
-```
-
-#### 5. Restart Tomcat
-Restart your Tomcat server to deploy the application. It will be available at `/portfolio`.
+Visit the following URL in your browser: [http://localhost:8080/home](http://localhost:8080/home)
 
 ---
 
-### Finish — Open the Application
-
-Visit the following URL in your browser:
-
-- **Docker Setup:** [http://localhost:8080/home](http://localhost:8080/home)
-- **Manual Setup:** [http://localhost:8080/portfolio/home](http://localhost:8080/portfolio/home)
-
----
-
-## Application URLs
+## Application Layout
 
 > [!NOTE]
-> **On Context Paths:** 
-> - If using **Docker**, the application is deployed as the **ROOT** context. Remove `/portfolio` from the URLs below (e.g., `http://localhost:8080/home`).
-> - If using **Manual Setup**, the application is deployed at `/portfolio`. Use the URLs exactly as shown.
+> The application is deployed as the **ROOT** context in Docker. All URLs are relative to `http://localhost:8080/`.
 
 ### Public Pages
 
 | URL | Page |
 |---|---|
-| `http://localhost:8080/portfolio/home` | Home |
-| `http://localhost:8080/portfolio/about` | About |
-| `http://localhost:8080/portfolio/skills` | Skills |
-| `http://localhost:8080/portfolio/projects` | Projects |
-| `http://localhost:8080/portfolio/education` | Education |
-| `http://localhost:8080/portfolio/contact` | Contact |
+| `http://localhost:8080/home` | Home |
+| `http://localhost:8080/about` | About |
+| `http://localhost:8080/skills` | Skills |
+| `http://localhost:8080/projects` | Projects |
+| `http://localhost:8080/education` | Education |
+| `http://localhost:8080/contact` | Contact |
 
 ### Auth Pages
 
 | URL | Page |
 |---|---|
-| `http://localhost:8080/portfolio/register` | Create admin account |
-| `http://localhost:8080/portfolio/login` | Admin login |
-| `http://localhost:8080/portfolio/logout` | Logout |
+| `http://localhost:8080/register` | Create admin account |
+| `http://localhost:8080/login` | Admin login |
+| `http://localhost:8080/logout` | Logout |
 
 ### Admin Pages (login required)
 
 | URL | Page |
 |---|---|
-| `http://localhost:8080/portfolio/admin/dashboard` | Dashboard overview |
-| `http://localhost:8080/portfolio/admin/projects` | Manage projects |
-| `http://localhost:8080/portfolio/admin/projects?action=add` | Add project |
-| `http://localhost:8080/portfolio/admin/skills` | Manage skills |
-| `http://localhost:8080/portfolio/admin/skills?action=add` | Add skill |
+| `http://localhost:8080/admin/dashboard` | Dashboard overview |
+| `http://localhost:8080/admin/projects` | Manage projects |
+| `http://localhost:8080/admin/projects?action=add` | Add project |
+| `http://localhost:8080/admin/skills` | Manage skills |
+| `http://localhost:8080/admin/skills?action=add` | Add skill |
 
 ---
 
@@ -406,11 +342,12 @@ Visit the following URL in your browser:
 The registration page is intentionally accessible without login so the
 portfolio owner can create their account on first setup:
 
-1. Go to the registration page (e.g., `/portfolio/register` or `/register`)
+1. Go to the registration page ([http://localhost:8080/register](http://localhost:8080/register))
 2. Enter a username, email, and password (minimum 8 characters)
 3. You will be redirected to the login page on success
 4. Sign in — you will land on the admin dashboard
 
+> [!TIP]
 > Passwords are stored as **BCrypt hashes** (cost factor 12).
 > Plain text passwords are never stored or logged anywhere.
 
@@ -463,6 +400,7 @@ portfolio owner can create their account on first setup:
 - [x] Admin logout with session invalidation + cache-control headers
 - [x] Admin dashboard with stats and contact message inbox
 - [x] Projects CRUD — Add, Edit, Delete, Featured flag
+- [x] Project Cover Images — Upload custom images for featured projects (Persists via Docker volume)
 - [x] Skills CRUD — Add, Edit, Delete, Category + Proficiency
 - [x] Education CRUD — Add, Edit, Delete, Degree + GPA + Dates
 - [x] Session guard on all admin routes
@@ -476,13 +414,11 @@ portfolio owner can create their account on first setup:
 
 | Problem | Likely Cause | Fix |
 |---|---|---|
-| `404` on all pages | WAR not deployed or context path mismatch | Check if using `/portfolio` (Manual) or `/` (Docker) |
-| `500` on JSP pages | DB connection failed | Check `.env` credentials and `DB_HOST` (`db` vs `localhost`) |
-| `Docker port conflict` | Port 8080 or 3307 already in use | Stop local Tomcat/MySQL or change ports in `docker-compose.yml` |
-| `Docker changes not reflecting` | Container using old build | Run `docker-compose up --build` |
-| `Communications link failure` | MySQL not running | Start MySQL service or check Docker `db` container status |
-| `Access denied for user` | Wrong DB password | Update `.env` and restart application |
-| `BUILD FAILURE` | Missing dependency or Java version | Ensure Java 17+ and run `mvn clean package` |
+| `500` on JSP pages | DB connection failed | Check `.env` credentials and verify `DB_HOST=db` |
+| `Docker port conflict` | Port 8080 or 3307 already in use | Stop local processes or change host ports in `docker-compose.yml` |
+| `Docker changes not reflecting` | Container using old build | Run `docker-compose up --build -d` |
+| `Communications link failure` | MySQL container not ready | Check `docker-compose ps` — `portfolio_db` must be healthy |
+| `Access denied for user` | Wrong DB password | Update `.env` and restart containers |
 | Admin login not working | BCrypt hash mismatch | Re-register via `/register` to generate a fresh hash |
 | Pages show no data | DB empty or wrong user_id | Re-import `portfolio_db.sql` or check Docker volumes |
 

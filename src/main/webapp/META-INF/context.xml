@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  context.xml — bundled inside the WAR (META-INF/context.xml).
+  Tomcat picks this up automatically when deploying.
+
+  The <Resources> block mounts the Docker bind-mount volume
+  (/app/uploads  →  ./project-media/uploads on the host) as a
+  virtual path (/uploads) inside the webapp.
+
+  This means uploaded cover images saved to
+      /app/uploads/project-covers/<uuid>.ext
+  are served publicly at
+      /uploads/project-covers/<uuid>.ext
+  without any Servlet involved.
+-->
+<Context>
+    <Resources>
+        <!--
+          DirResourceSet adds an extra static-resource root.
+            base         = absolute path on the container FS (bind-mounted volume)
+            webAppMount  = URL prefix inside the webapp
+        -->
+        <PreResources
+            className="org.apache.catalina.webresources.DirResourceSet"
+            base="/app/uploads"
+            webAppMount="/uploads"
+            readOnly="true" />
+    </Resources>
+</Context>

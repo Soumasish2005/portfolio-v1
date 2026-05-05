@@ -38,6 +38,13 @@ services:
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
+      # Directory inside the container where cover images are written.
+      # Mapped to ./project-media/uploads on the host so files survive rebuilds.
+      UPLOAD_DIR: /app/uploads/project-covers
+    volumes:
+      # Bind-mount: host ./project-media/uploads  →  container /app/uploads
+      # Tomcat serves this directory at the /uploads URL path via context.xml.
+      - ./project-media/uploads:/app/uploads
 
 volumes:
   portfolio_data:

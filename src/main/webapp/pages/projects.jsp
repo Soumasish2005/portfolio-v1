@@ -25,7 +25,15 @@
                             <div class="projects__featured" data-title="${project.title}"
                                 data-tech="${project.techStack}">
                                 <div class="projects__featured-inner">
-                                    <div class="projects__featured-img">🚀</div>
+                                    <div class="projects__featured-img">
+                                        <c:choose>
+                                            <c:when test="${not empty project.coverImage}">
+                                                <img src="${pageContext.request.contextPath}/${project.coverImage}"
+                                                     alt="<c:out value='${project.title}'/> cover" />
+                                            </c:when>
+                                            <c:otherwise>🚀</c:otherwise>
+                                        </c:choose>
+                                    </div>
                                     <div class="projects__featured-content">
                                         <span class="featured-label">Featured Project</span>
                                         <h2>

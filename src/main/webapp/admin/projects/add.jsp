@@ -24,6 +24,7 @@
 
                         <div class="admin-form-wrap">
                             <form action="${pageContext.request.contextPath}/admin/projects?action=add" method="post"
+                                enctype="multipart/form-data"
                                 class="admin-form">
 
                                 <div class="form-group">
@@ -61,6 +62,21 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group" id="coverImageGroup" style="display:none;">
+                                    <label for="coverImage">Cover Image</label>
+                                    <p class="form-hint">Displayed on the Projects page for featured projects. Max 5 MB (JPG, PNG, WebP, GIF).</p>
+                                    <div class="cover-upload-area" id="coverUploadArea">
+                                        <input type="file" id="coverImage" name="coverImage"
+                                            accept="image/jpeg,image/png,image/webp,image/gif,image/avif"
+                                            class="cover-file-input" />
+                                        <div class="cover-upload-placeholder" id="coverPlaceholder">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                            <span>Click or drag to upload a cover image</span>
+                                        </div>
+                                        <img id="coverPreview" class="cover-preview" src="" alt="Cover preview" style="display:none;" />
+                                    </div>
+                                </div>
+
                                 <div class="admin-form__actions">
                                     <button type="submit" class="btn btn-primary">Add Project</button>
                                     <a href="${pageContext.request.contextPath}/admin/projects"
@@ -75,6 +91,33 @@
             </div>
 
             <script src="${pageContext.request.contextPath}/assets/js/theme.js"></script>
+            <script>
+                (function () {
+                    var featuredCb   = document.getElementById('featured');
+                    var coverGroup   = document.getElementById('coverImageGroup');
+                    var coverInput   = document.getElementById('coverImage');
+                    var coverPreview = document.getElementById('coverPreview');
+                    var placeholder  = document.getElementById('coverPlaceholder');
+
+                    function toggleCover() {
+                        coverGroup.style.display = featuredCb.checked ? '' : 'none';
+                    }
+                    featuredCb.addEventListener('change', toggleCover);
+                    toggleCover();
+
+                    coverInput.addEventListener('change', function () {
+                        var file = this.files[0];
+                        if (!file) return;
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            coverPreview.src = e.target.result;
+                            coverPreview.style.display = 'block';
+                            placeholder.style.display  = 'none';
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                })();
+            </script>
         </body>
 
         </html>

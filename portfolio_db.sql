@@ -76,6 +76,7 @@ CREATE TABLE projects (
     github_url  VARCHAR(255)    DEFAULT NULL,
     live_url    VARCHAR(255)    DEFAULT NULL,
     featured    TINYINT(1)      NOT NULL DEFAULT 0,
+    cover_image VARCHAR(500)    DEFAULT NULL,
     created_at  TIMESTAMP       NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT pk_projects PRIMARY KEY (id),
     CONSTRAINT fk_projects_user
